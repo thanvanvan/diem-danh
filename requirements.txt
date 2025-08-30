@@ -1,0 +1,8 @@
+dash
+dash-bootstrap-components
+pandas
+gspread
+oauth2client
+qrcode
+reportlab
+openpyxl # Cần cho việc xuất file Excel
