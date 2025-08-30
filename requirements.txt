@@ -6,3 +6,4 @@ oauth2client
 qrcode
 reportlab
 openpyxl # Cần cho việc xuất file Excel
+gunicorn
