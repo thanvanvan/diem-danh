@@ -7,3 +7,4 @@ qrcode
 reportlab
 openpyxl # Cần cho việc xuất file Excel
 gunicorn
+python-dotenv
