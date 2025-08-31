@@ -53,7 +53,7 @@ def get_google_sheet_client():
 
 def generate_qr_with_token(expiry_minutes=5):
     now = datetime.now()
-    attendance_code = f"{now.strftime('TLU%d%H%M%S')}"
+    attendance_code = f"{now.strftime('T%d%H%M%S')}"
     expiry_timestamp = int(time.time() + expiry_minutes * 60)
     
     # LƯU Ý: Thay 'entry.xxxxxxxxxx' bằng Entry ID của câu hỏi "Mã điểm danh" của bạn
