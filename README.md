@@ -20,17 +20,17 @@ Xuất báo cáo: Dễ dàng xuất toàn bộ dữ liệu điểm danh ra file 
 
 ## 🚀 Cài đặt và Chạy ứng dụng
 
-Yêu cầu
+### Yêu cầu
 
 Python 3.8+
 
 Tài khoản Google
 
-Bước 1: Thiết lập môi trường Google Cloud & Sheets
+### Bước 1: Thiết lập môi trường Google Cloud & Sheets
 
 Đây là bước quan trọng nhất để ứng dụng có thể giao tiếp với Google Sheets.
 
-Tạo Google Form:
+#### Tạo Google Form:
 
 Tạo một Google Form với các câu hỏi cần thiết (ví dụ: Họ và tên, Mã số sinh viên, Lớp học phần).
 
@@ -38,7 +38,7 @@ Quan trọng: Thêm một câu hỏi dạng "Short answer" (Trả lời ngắn) 
 
 Liên kết Form với một Google Sheet mới.
 
-Tạo Service Account trên Google Cloud:
+#### Tạo Service Account trên Google Cloud:
 
 Truy cập Google Cloud Console và tạo một dự án mới.
 
@@ -48,7 +48,7 @@ Tạo một Service Account, cấp quyền Editor.
 
 Tạo một Key dạng JSON cho Service Account và tải về.
 
-Chia sẻ quyền cho Google Sheet:
+#### Chia sẻ quyền cho Google Sheet:
 
 Mở file JSON vừa tải, sao chép giá trị của trường "client_email" (có dạng ...@...iam.gserviceaccount.com).
 
@@ -56,7 +56,7 @@ Mở Google Sheet, nhấn nút Share và chia sẻ quyền Editor cho địa ch�
 
 (Để xem hướng dẫn chi tiết từng bước, hãy tham khảo tài liệu của Google Cloud.)
 
-Bước 2: Cấu hình ứng dụng
+### Bước 2: Cấu hình ứng dụng
 
 Clone repository này:
 
@@ -78,13 +78,13 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
-Tạo và cấu hình file .env:
+#### Tạo và cấu hình file .env:
 
 Tạo một file mới tên là .env trong thư mục gốc.
 
 Mở file và thêm các biến môi trường sau:
 
-#### .env
+.env
 
 #### ID của Google Sheet (lấy từ URL)
 
@@ -98,7 +98,7 @@ FORM_ID=""
 
 GCP_CREDENTIALS_JSON="{ \"type\": \"service_account\", ... }"
 
-Bước 3: Chạy ứng dụng
+### Bước 3: Chạy ứng dụng
 
 Sau khi đã cấu hình xong, chạy lệnh sau trong terminal:
 
@@ -108,7 +108,7 @@ Mở trình duyệt và truy cập vào địa chỉ http://127.0.0.1:8050/.
 
 ## 📖 Hướng dẫn sử dụng
 
-Tạo mã QR:
+### Tạo mã QR:
 
 Chọn thời gian hiệu lực mong muốn trên thanh trượt.
 
@@ -116,7 +116,7 @@ Nhấn nút "Tạo QR mới".
 
 Một mã QR và mã điểm danh tương ứng sẽ xuất hiện. Trình chiếu mã QR này cho sinh viên.
 
-Theo dõi điểm danh:
+### Theo dõi điểm danh:
 
 Bảng điểm danh sẽ tự động làm mới.
 
@@ -124,7 +124,7 @@ Các lượt điểm danh của sinh viên sử dụng mã cũ sẽ được tô
 
 Giảng viên có thể sử dụng bộ lọc để xem lại lịch sử điểm danh theo ngày hoặc theo lớp.
 
-Kết thúc:
+### Kết thúc:
 
 Nhấn nút "Xuất Excel" để tải về báo cáo điểm danh của toàn bộ các buổi học.
 
