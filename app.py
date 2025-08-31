@@ -78,7 +78,7 @@ def load_and_process_attendance():
     try:
         spreadsheet = client.open_by_key(SPREADSHEET_ID)
         worksheet = spreadsheet.worksheet(SHEET_NAME)
-        records = worksheet.get_all_records()
+        records = worksheet.get_all_records(dtype=str)
         df = pd.DataFrame(records)
         
         if df.empty:
