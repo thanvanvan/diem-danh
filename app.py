@@ -80,19 +80,28 @@ def load_and_process_attendance():
         worksheet = spreadsheet.worksheet(SHEET_NAME)
         
         # === THAY ĐỔI Ở ĐÂY ===
-        # Đọc tất cả dữ liệu dưới dạng văn bản (string) để bảo toàn số 0 ở đầu
-        records = worksheet.get_all_records(dtype=str) 
-        
+       # 1. Đọc dữ liệu bình thường, không có dtype
+        records = worksheet.get_all_records()
         df = pd.DataFrame(records)
         
         if df.empty:
             return pd.DataFrame([{"Thông báo": "Chưa có dữ liệu điểm danh."}])
-            
+        
+        # 2. CHUYỂN ĐỔI KIỂU DỮ LIỆU THỦ CÔNG
+        # Liệt kê tất cả các cột cần đảm bảo là văn bản
+        string_columns = ["Mã điểm danh", "Mã số người học", "Lớp học phần"]
+        
+        for col in string_columns:
+            if col in df.columns:
+                # Ép kiểu cột đó thành string, fillna('') để xử lý các ô trống
+                df[col] = df[col].astype(str).fillna('')
+        
+        # 3. Xử lý Timestamp
         if "Timestamp" in df.columns:
-            # Chuyển đổi Timestamp sang datetime, coerce sẽ biến lỗi thành NaT (Not a Time)
             df["Timestamp"] = pd.to_datetime(df["Timestamp"], errors='coerce')
-            df.dropna(subset=["Timestamp"], inplace=True) # Xóa các dòng có timestamp không hợp lệ
+            df.dropna(subset=["Timestamp"], inplace=True)
             df["Thời gian điểm danh"] = df["Timestamp"].dt.strftime('%H:%M:%S %d-%m-%Y')
+            
         return df
     except gspread.exceptions.SpreadsheetNotFound:
         return pd.DataFrame([{"Lỗi": f"Không tìm thấy Spreadsheet ID. Đã share quyền Editor chưa?"}])
