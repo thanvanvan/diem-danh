@@ -78,15 +78,20 @@ def load_and_process_attendance():
     try:
         spreadsheet = client.open_by_key(SPREADSHEET_ID)
         worksheet = spreadsheet.worksheet(SHEET_NAME)
-        records = worksheet.get_all_records(dtype=str)
+        
+        # === THAY ĐỔI Ở ĐÂY ===
+        # Đọc tất cả dữ liệu dưới dạng văn bản (string) để bảo toàn số 0 ở đầu
+        records = worksheet.get_all_records(dtype=str) 
+        
         df = pd.DataFrame(records)
         
         if df.empty:
             return pd.DataFrame([{"Thông báo": "Chưa có dữ liệu điểm danh."}])
             
         if "Timestamp" in df.columns:
+            # Chuyển đổi Timestamp sang datetime, coerce sẽ biến lỗi thành NaT (Not a Time)
             df["Timestamp"] = pd.to_datetime(df["Timestamp"], errors='coerce')
-            df.dropna(subset=["Timestamp"], inplace=True)
+            df.dropna(subset=["Timestamp"], inplace=True) # Xóa các dòng có timestamp không hợp lệ
             df["Thời gian điểm danh"] = df["Timestamp"].dt.strftime('%H:%M:%S %d-%m-%Y')
         return df
     except gspread.exceptions.SpreadsheetNotFound:
