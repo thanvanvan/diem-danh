@@ -114,7 +114,7 @@ app.layout = dbc.Container([
                 html.Div(id="qr-status-display", className="text-center"),
                 html.Img(id="qr-code-display", style={"width":"280px", "margin":"10px auto", "display":"block"}),
             ])
-        ]), width=2),
+        ]), width=3),
         dbc.Col(dbc.Card([
             dbc.CardHeader("Bảng điểm danh"),
             dbc.CardBody([
@@ -138,7 +138,7 @@ app.layout = dbc.Container([
                     dbc.Button("Xuất Excel", id="btn-excel", color="secondary", className="ms-2"),
                 ], className="mt-3"),
             ])
-        ]), width=10)
+        ]), width=9)
     ]),
     dcc.Interval(id="auto-refresh-interval", interval=60*1000, n_intervals=0)
 ], fluid=True)
