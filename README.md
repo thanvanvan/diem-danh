@@ -1,8 +1,8 @@
-Hệ thống Điểm danh bằng Mã QR
+# Hệ thống Điểm danh bằng Mã QR
 
 Ứng dụng web được xây dựng bằng Python Dash để tạo và quản lý hệ thống điểm danh tự động cho các lớp học thông qua mã QR và Google Forms. Ứng dụng giúp giảng viên tạo mã điểm danh duy nhất cho mỗi buổi học, giới hạn thời gian điểm danh và tự động phát hiện các trường hợp gian lận.
 
-✨ Tính năng chính
+## ✨ Tính năng chính
 
 Tạo mã QR động: Tự động sinh mã QR với mã điểm danh duy nhất dựa trên thời gian thực.
 
@@ -18,7 +18,7 @@ Tự động làm mới: Bảng điểm danh tự động cập nhật để gi�
 
 Xuất báo cáo: Dễ dàng xuất toàn bộ dữ liệu điểm danh ra file Excel chỉ với một cú nhấp chuột.
 
-🚀 Cài đặt và Chạy ứng dụng
+## 🚀 Cài đặt và Chạy ứng dụng
 
 Yêu cầu
 
@@ -68,11 +68,11 @@ Tạo môi trường ảo và cài đặt thư viện:
 
 python -m venv venv
 
-# Trên Windows
+### Trên Windows
 
 .\venv\Scripts\activate
 
-# Trên macOS/Linux
+### Trên macOS/Linux
 
 source venv/bin/activate
 
@@ -84,17 +84,17 @@ Tạo một file mới tên là .env trong thư mục gốc.
 
 Mở file và thêm các biến môi trường sau:
 
-# .env
+#### .env
 
-# ID của Google Sheet (lấy từ URL)
+#### ID của Google Sheet (lấy từ URL)
 
 SPREADSHEET_ID=""
 
-# ID của Google Form (lấy từ URL)
+#### ID của Google Form (lấy từ URL)
 
 FORM_ID=""
 
-# Nội dung file credentials.json (dán toàn bộ vào một dòng duy nhất)
+#### Nội dung file credentials.json (dán toàn bộ vào một dòng duy nhất)
 
 GCP_CREDENTIALS_JSON="{ \"type\": \"service_account\", ... }"
 
@@ -106,7 +106,7 @@ python app.py
 
 Mở trình duyệt và truy cập vào địa chỉ http://127.0.0.1:8050/.
 
-📖 Hướng dẫn sử dụng
+## 📖 Hướng dẫn sử dụng
 
 Tạo mã QR:
 
@@ -128,7 +128,7 @@ Kết thúc:
 
 Nhấn nút "Xuất Excel" để tải về báo cáo điểm danh của toàn bộ các buổi học.
 
-🛠️ Công nghệ sử dụng
+## 🛠️ Công nghệ sử dụng
 
 Backend & Frontend: Dash (Python)
 
@@ -140,6 +140,6 @@ Tương tác với Google API: gspread, oauth2client
 
 Tạo mã QR: qrcode
 
-📜 Giấy phép
+## 📜 Giấy phép
 
 Dự án này được cấp phép theo Giấy phép MIT. Xem file LICENSE để biết thêm chi tiết.
